@@ -3,10 +3,7 @@ function [X, W] = train_reg_log(X, Y, l = 10^(-5))
   X = [ones(n, 1), X];              #dodanie x0
   m = size(X, 2);                   #kolumny (cechy)
   
-  W = zeros(m, 1);                  #poczatkowy wektor W
-  #B = diag(1./(1+e.^(Y.*(X*W))));    #Macierz diagonalna z beta
-  #H = X'*B*(eye(n)-B)*X;
-  #grad = l*W - X'*B*Y;              
+  W = zeros(m, 1);                  #poczatkowy wektor W        
   
   it = 0;
   do

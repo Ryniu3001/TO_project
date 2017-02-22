@@ -1,6 +1,5 @@
 function [W] = reg_log_alg(X, Y, X_test, Y_test)  
-  #[X, Y] = readdata(trainFile, " ");  
-  #[X_test, Y_test] = readdata(testFile, " "); 
+
   tic();
   [X, W] = train_reg_log(X, Y);     #Optymalizacja wektora wag
   toc()

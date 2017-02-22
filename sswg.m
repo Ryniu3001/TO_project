@@ -13,7 +13,7 @@ function [W, LOG_ERRORS, ERRORS_01] = sswg(x,y, x_test, y_test)
   Y_pred_test = x_test * W;
   
   #blad 0/1
-  ERR = Y_pred_test .* y;
+  ERR = Y_pred_test .* y_test;
   mean_01_error_test = mean(ERR < 0);
   mean_01_error_train = ERRORS_01(size(ERRORS_01,2));
   
