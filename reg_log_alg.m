@@ -1,7 +1,7 @@
 function [W] = reg_log_alg(X, Y, X_test, Y_test)  
-
+  # Refresja logistyczna metoda N-R
   tic();
-  [X, W] = train_reg_log(X, Y);     #Optymalizacja wektora wag
+  [X, W] = train_reg_log(X, Y, false);     #Optymalizacja wektora wag
   toc()
   csvwrite('res/W_NR.txt', W);
   

@@ -1,6 +1,5 @@
 function [W, LOG_ERRORS, ERRORS_01] = sswg_train(X, Y, ages)
-  
-  
+  #SDG wyznaczenie wektora W i bledow na danych treningowych  
   n = size(X, 1);      #wiersze
   X = [ones(n,1), X];
   
@@ -12,8 +11,7 @@ function [W, LOG_ERRORS, ERRORS_01] = sswg_train(X, Y, ages)
   ERRORS_01 = [];
   m = size(Xp, 2);    #kolumny
   W = zeros(m, 1);
-  W_prev = W;           #wektor W jedna epoke wstecz
-  c = 0.25;            #krok
+  c = 0.2;            #krok
   for k=1:ages
     for i = 1:n
       step = c/sqrt(i + (k-1) * n);
@@ -21,7 +19,7 @@ function [W, LOG_ERRORS, ERRORS_01] = sswg_train(X, Y, ages)
       W = W + grad';
     endfor
     Y_pred = Xp * W;                                  # predycja y
-    ERR = mean(log(1 + e.^((-1) .* Yp .* Y_pred)))    #sredni blad logistyczny
+    ERR = mean(log(1 + e.^((-1) .* Yp .* Y_pred)));    #sredni blad logistyczny
     LOG_ERRORS = [LOG_ERRORS, ERR];
     
     ERR01 = mean((Y_pred .* Yp) < 0);
